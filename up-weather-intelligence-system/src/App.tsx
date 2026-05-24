@@ -232,15 +232,15 @@ export const App: React.FC = () => {
       <header className="bg-[#0b1329]/95 backdrop-blur-md border-b border-slate-800 sticky top-0 z-50 px-4 lg:px-8 py-3 shadow-xl">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-sky-500 via-indigo-500 to-purple-600 p-0.5 shadow-lg shadow-sky-500/20">
-              <div className="w-full h-full bg-[#020617] rounded-[10px] flex items-center justify-center text-sky-400">
-                <CloudLightning className="w-6 h-6 animate-pulse" />
-              </div>
+            <div className="bg-sky-500/20 p-2 rounded-lg border border-sky-500/30">
+              <CloudLightning className="w-5 h-5 text-sky-400" />
             </div>
             <div>
               <div className="flex items-center gap-2">
-                <h1 className="text-lg font-black text-white tracking-tight">RAINFALL ANALYTICS PRO</h1>
-                <span className="text-[10px] font-mono bg-sky-500/10 text-sky-400 border border-sky-500/30 px-2 py-0.5 rounded-full font-bold">UP EDITION</span>
+                <h1 className="text-lg font-black text-white tracking-tight text-transform: uppercase">RAINFALL PREDICTION</h1>
+                <span className="px-1.5 py-0.5 rounded text-[10px] font-bold bg-sky-500/10 text-sky-400 border border-sky-500/20 uppercase tracking-wider">
+                  Enterprise
+                </span>
                 <span className="text-[10px] font-mono bg-red-500/10 text-red-400 border border-red-500/30 px-2 py-0.5 rounded-full font-bold flex items-center gap-1">
                   <Radio className="w-2.5 h-2.5 animate-pulse" /> LIVE
                 </span>
@@ -339,10 +339,17 @@ export const App: React.FC = () => {
       </main>
 
       <footer className="bg-[#0b1329]/90 border-t border-slate-800 mt-12 py-6 px-4 text-center text-xs text-slate-500">
-        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
-          <div>
-            <p className="font-semibold text-slate-400">Rainfall Analytics Pro • End-to-End UP Weather Intelligence</p>
-            <p className="text-[11px] mt-0.5">Live Telemetry • Models: Your FastAPI Backend • SQLite Indexed Database</p>
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+            <div className="flex items-center gap-4">
+              <div className="w-10 h-10 bg-sky-500/10 rounded-xl border border-sky-500/20 flex items-center justify-center">
+                <CloudLightning className="w-6 h-6 text-sky-400" />
+              </div>
+              <div>
+                <p className="font-semibold text-slate-400 text-transform: uppercase">Rainfall Prediction • End-to-End UP Weather Intelligence</p>
+                <p className="text-xs text-slate-500">© 2024 Dual-Stage ML Infrastructure • V1.2.0-Production</p>
+              </div>
+            </div>
           </div>
           <div className="flex items-center gap-4 font-mono text-[11px]">
             <span className="text-emerald-400">● Live Data Streaming</span>
