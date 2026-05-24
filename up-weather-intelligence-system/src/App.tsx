@@ -16,6 +16,9 @@ import {
 } from './services/liveWeather';
 import { CloudLightning, Database, ShieldAlert, Cpu, Activity, Info, Radio } from 'lucide-react';
 
+// Use a fallback for the API URL if env is not defined
+const DEFAULT_API_URL = (window as any).VITE_API_URL || 'http://localhost:8000';
+
 export const App: React.FC = () => {
   // District data
   const [districts, setDistricts] = useState<DistrictData[]>(UP_DISTRICTS);
@@ -30,7 +33,7 @@ export const App: React.FC = () => {
 
   // Backend config
   const [apiMode, setApiMode] = useState<'live' | 'embedded'>('live');
-  const [apiUrl, setApiUrl] = useState<string>('http://localhost:8000');
+  const [apiUrl, setApiUrl] = useState<string>(DEFAULT_API_URL);
   const [isConnected, setIsConnected] = useState<boolean>(false);
   const [lastPing, setLastPing] = useState<number | null>(null);
   const [isSyncing, setIsSyncing] = useState<boolean>(false);
