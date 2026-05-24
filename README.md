@@ -1,6 +1,10 @@
-# 🌧️ UP Rainfall Prediction Pipeline (Dual-Stage ML)
+# 🌧️ Rainfall Prediction System (Dual-Stage ML)
 
 An advanced meteorological intelligence system designed to predict rainfall threats and volumes across 75 districts of Uttar Pradesh using specialized Machine Learning models.
+
+## 🔗 Live Deployment
+**Web Application**: [http://16.171.254.60:5176](http://16.171.254.60:5176)  
+**API Status**: [http://16.171.254.60/ping](http://16.171.254.60/ping)
 
 ## 🚀 System Architecture
 
@@ -9,19 +13,19 @@ This project implements a **Dual-Stage Pipeline**:
 2.  **Stage 2: Regression (LightGBM)** - If a threat is detected, this model estimates the precise rainfall volume in millimeters.
 
 ### Core Technologies
-*   **Backend**: FastAPI (Python 3.11) with Uvicorn (4-worker parallel processing).
-*   **Frontend**: React 19 + Vite + Tailwind CSS 4.
+*   **Backend**: FastAPI (Python) - Hosted on AWS EC2 (Port 80).
+*   **Frontend**: React 19 + Vite + Tailwind CSS - Hosted on Port 5176.
 *   **Intelligence**: Open-Meteo API integration for real-time telemetry.
-*   **Physics Engine**: Magnus-Tetens formula for precise Specific Humidity calculation.
+*   **Models**: XGBoost (Classification) & LightGBM (Regression).
 
 ## 🛠️ Features
 
 *   **Real-time Dashboard**: Interactive map showing weather telemetry for all 75 districts.
 *   **Synchronous Analytics**: Live streaming of atmospheric data (Temperature, Humidity, Pressure, Wind Vectors).
-*   **High Performance**: Asynchronous data fetching (Parallelized on both Frontend and Backend).
-*   **Meteorological Logic**: Handles complex feature engineering including $u$ and $v$ wind components and temporal periodic encodings.
+*   **High Performance**: Asynchronous data fetching using `httpx` and `Promise.all`.
+*   **Production Ready**: Automated deployment on AWS with persistent background sessions.
 
-## 🚦 Getting Started
+## 🚦 Getting Started (Local Development)
 
 ### Prerequisites
 *   Python 3.11+
@@ -30,28 +34,21 @@ This project implements a **Dual-Stage Pipeline**:
 
 ### 1. Backend Setup
 ```bash
-# Install dependencies
 pip install -r requirements.txt
-
-# Run the API
-uvicorn main_api:app --host 0.0.0.0 --port 8000 --workers 4
+python3 -m uvicorn main_api:app --host 0.0.0.0 --port 8000
 ```
 
 ### 2. Frontend Setup
 ```bash
-# Navigate to UI folder
 cd up-weather-intelligence-system
-
-# Install and Run
 npm install
-npx vite --port 5176
+npm run dev
 ```
 
-## 📊 API Endpoints
-
-*   `GET /live-weather`: Fetches real-time RAW telemetry.
-*   `POST /predict`: Unified endpoint for the Dual-Stage prediction results.
-*   `GET /api/v1/forecast`: Multi-district summarized intelligence.
+## 📊 Deployment
+The system is currently deployed on **AWS EC2 (Ubuntu 26.04)**:
+*   **Backend**: Running as a root service on Port 80 for public accessibility.
+*   **Processes**: Managed via `screen` for 24/7 uptime.
 
 ## 📄 License
-MIT License - Developed for Advanced Rainfall Analytics in Uttar Pradesh.
+MIT License - Developed for Advanced Rainfall Analytics.
